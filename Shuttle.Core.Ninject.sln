@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shuttle.Core.Ninject", "Shuttle.Core.Ninject\Shuttle.Core.Ninject.csproj", "{0F3D1C2E-3119-4837-8C76-DDE794BA95BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shuttle.Core.Ninject.Tests", "Shuttle.Core.Ninject.Tests\Shuttle.Core.Ninject.Tests.csproj", "{6AC7CC22-384B-4B05-A6ED-2EB68FFB44B2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{FF1673F1-C1FF-43F5-8509-39A2DA30973C}"
+	ProjectSection(SolutionItems) = preProject
+		.build\package.msbuild = .build\package.msbuild
+		.build\package.nuspec = .build\package.nuspec
+		.build\Shuttle.Core.MSBuild.dll = .build\Shuttle.Core.MSBuild.dll
+		.build\Shuttle.Core.MSBuild.targets = .build\Shuttle.Core.MSBuild.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E423CC68-F6FB-4F5B-A585-12B1D0C6C4F2}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F3D1C2E-3119-4837-8C76-DDE794BA95BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F3D1C2E-3119-4837-8C76-DDE794BA95BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F3D1C2E-3119-4837-8C76-DDE794BA95BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F3D1C2E-3119-4837-8C76-DDE794BA95BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AC7CC22-384B-4B05-A6ED-2EB68FFB44B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AC7CC22-384B-4B05-A6ED-2EB68FFB44B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AC7CC22-384B-4B05-A6ED-2EB68FFB44B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AC7CC22-384B-4B05-A6ED-2EB68FFB44B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
