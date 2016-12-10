@@ -9,9 +9,13 @@
 		<projectUrl>https://github.com/shuttle/Shuttle.Core.Ninject</projectUrl>
 		<iconUrl>https://raw.githubusercontent.com/Shuttle/Shuttle.Core.Ninject/master/.media/logo.png</iconUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
-		<description></description>
+		<description>Ninject Kernel implementation of the Shuttle.Core.Infrastructure.IComponentContainer interface. </description>
 		<releaseNotes/>
 		<copyright>Copyright (c) {year}, Eben Roux</copyright>
-		<tags>shuttle</tags>
-	</metadata>
+    <tags>Shuttle.Core Ninject</tags>
+    <dependencies>
+      <dependency id="Shuttle.Core.Infrastructure" version="{Shuttle.Core.Infrastructure-version}" />
+      <dependency id="Ninject" version="{Ninject-version}" />
+    </dependencies>
+  </metadata>
 </package>

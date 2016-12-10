@@ -5,7 +5,7 @@ using Shuttle.Core.Infrastructure;
 
 namespace Shuttle.Core.Ninject
 {
-    public class NinjectComponentContainer : IComponentContainer
+    public class NinjectComponentContainer : IComponentRegistry, IComponentResolver
     {
         private readonly StandardKernel _container;
 
@@ -35,7 +35,7 @@ namespace Shuttle.Core.Ninject
             return (T)Resolve(typeof(T));
         }
 
-        public IComponentContainer Register(Type serviceType, Type implementationType, Lifestyle lifestyle)
+        public IComponentRegistry Register(Type serviceType, Type implementationType, Lifestyle lifestyle)
         {
             Guard.AgainstNull(serviceType, "serviceType");
             Guard.AgainstNull(implementationType, "implementationType");
@@ -44,12 +44,6 @@ namespace Shuttle.Core.Ninject
             {
                 switch (lifestyle)
                 {
-                    case Lifestyle.Thread:
-                        {
-                            _container.Bind(serviceType).To(implementationType).InThreadScope();
-
-                            break;
-                        }
                     case Lifestyle.Transient:
                         {
                             _container.Bind(serviceType).To(implementationType).InTransientScope();
@@ -71,7 +65,7 @@ namespace Shuttle.Core.Ninject
             return this;
         }
 
-        public IComponentContainer Register(Type serviceType, object instance)
+        public IComponentRegistry Register(Type serviceType, object instance)
         {
             Guard.AgainstNull(serviceType, "serviceType");
             Guard.AgainstNull(instance, "instance");
@@ -86,22 +80,6 @@ namespace Shuttle.Core.Ninject
             }
 
             return this;
-        }
-
-        public bool IsRegistered(Type serviceType)
-        {
-            Guard.AgainstNull(serviceType, "serviceType");
-
-            try
-            {
-                var instance = _container.Get(serviceType);
-
-                return true;
-            }
-            catch 
-            {
-                return false;
-            }
         }
     }
 }

@@ -1,8 +1,8 @@
-# Shuttle.Core.Castle
+# Shuttle.Core.NInject
 
-# UnityComponentContainer
+# NinjectComponentContainer
 
-The `NinjectComponentContainer` implements the `IComponentContainer` interface.  
+The `NinjectComponentContainer` implements both the `IComponentRegistry` and `IComponentResolver` interfaces.  
 
 ~~~c#
 var container = new NinjectComponentContainer(new StandardKernel());
