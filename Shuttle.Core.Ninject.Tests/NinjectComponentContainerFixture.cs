@@ -27,30 +27,12 @@ namespace Shuttle.Core.Ninject.Tests
         }
 
         [Test]
-        public void Should_be_able_to_register_and_resolve_a_named_singleton()
-        {
-            var container = new NinjectComponentContainer(new StandardKernel());
-
-            RegisterNamedSingleton(container);
-            ResolveNamedSingleton(container);
-        }
-
-        [Test]
-        public void Should_be_able_to_register_and_resolve_named_transient_components()
-        {
-            var container = new NinjectComponentContainer(new StandardKernel());
-
-            RegisterNamedTransient(container);
-            ResolveNamedTransient(container);
-        }
-
-        [Test]
         public void Should_be_able_resolve_all_instances()
         {
             var container = new NinjectComponentContainer(new StandardKernel());
 
-            RegisterMultipleInstances(container);
-            ResolveMultipleInstances(container);
+            RegisterCollection(container);
+            ResolveCollection(container);
         }
     }
 }

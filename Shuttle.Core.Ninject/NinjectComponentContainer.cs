@@ -47,28 +47,33 @@ namespace Shuttle.Core.Ninject
             return this;
         }
 
-        public IComponentRegistry Register(string name, Type serviceType, Type implementationType, Lifestyle lifestyle)
+        public IComponentRegistry RegisterCollection(Type serviceType, IEnumerable<Type> implementationTypes, Lifestyle lifestyle)
         {
-            Guard.AgainstNullOrEmptyString(name, "name");
             Guard.AgainstNull(serviceType, "serviceType");
-            Guard.AgainstNull(implementationType, "implementationType");
+            Guard.AgainstNull(implementationTypes, "implementationTypes");
 
             try
             {
                 switch (lifestyle)
                 {
                     case Lifestyle.Transient:
-                    {
-                        _container.Bind(serviceType).To(implementationType).InTransientScope().Named(name);
+                        {
+                            foreach (var implementationType in implementationTypes)
+                            {
+                                _container.Bind(serviceType).To(implementationType).InTransientScope();
+                            }
 
-                        break;
-                    }
+                            break;
+                        }
                     default:
-                    {
-                        _container.Bind(serviceType).To(implementationType).InSingletonScope().Named(name);
+                        {
+                            foreach (var implementationType in implementationTypes)
+                            {
+                                _container.Bind(serviceType).To(implementationType).InSingletonScope();
+                            }
 
-                        break;
-                    }
+                            break;
+                        }
                 }
             }
             catch (Exception ex)
