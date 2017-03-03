@@ -5,7 +5,7 @@ using Shuttle.Core.Infrastructure;
 
 namespace Shuttle.Core.Ninject
 {
-    public class NinjectComponentContainer : IComponentRegistry, IComponentResolver
+    public class NinjectComponentContainer : ComponentRegistry, IComponentResolver
     {
         private readonly StandardKernel _container;
 
@@ -16,24 +16,26 @@ namespace Shuttle.Core.Ninject
             _container = container;
         }
 
-        public IComponentRegistry Register(Type serviceType, Type implementationType, Lifestyle lifestyle)
+        public override IComponentRegistry Register(Type dependencyType, Type implementationType, Lifestyle lifestyle)
         {
-            Guard.AgainstNull(serviceType, "serviceType");
+            Guard.AgainstNull(dependencyType, "dependencyType");
             Guard.AgainstNull(implementationType, "implementationType");
 
+	        base.Register(dependencyType, implementationType, lifestyle);
+
             try
             {
                 switch (lifestyle)
                 {
                     case Lifestyle.Transient:
                     {
-                        _container.Bind(serviceType).To(implementationType).InTransientScope();
+                        _container.Bind(dependencyType).To(implementationType).InTransientScope();
 
                         break;
                     }
                     default:
                     {
-                        _container.Bind(serviceType).To(implementationType).InSingletonScope();
+                        _container.Bind(dependencyType).To(implementationType).InSingletonScope();
 
                         break;
                     }
@@ -47,11 +49,13 @@ namespace Shuttle.Core.Ninject
             return this;
         }
 
-        public IComponentRegistry RegisterCollection(Type serviceType, IEnumerable<Type> implementationTypes, Lifestyle lifestyle)
+        public override IComponentRegistry RegisterCollection(Type dependencyType, IEnumerable<Type> implementationTypes, Lifestyle lifestyle)
         {
-            Guard.AgainstNull(serviceType, "serviceType");
+            Guard.AgainstNull(dependencyType, "dependencyType");
             Guard.AgainstNull(implementationTypes, "implementationTypes");
 
+	        base.RegisterCollection(dependencyType, implementationTypes, lifestyle);
+
             try
             {
                 switch (lifestyle)
@@ -60,7 +64,7 @@ namespace Shuttle.Core.Ninject
                         {
                             foreach (var implementationType in implementationTypes)
                             {
-                                _container.Bind(serviceType).To(implementationType).InTransientScope();
+                                _container.Bind(dependencyType).To(implementationType).InTransientScope();
                             }
 
                             break;
@@ -69,7 +73,7 @@ namespace Shuttle.Core.Ninject
                         {
                             foreach (var implementationType in implementationTypes)
                             {
-                                _container.Bind(serviceType).To(implementationType).InSingletonScope();
+                                _container.Bind(dependencyType).To(implementationType).InSingletonScope();
                             }
 
                             break;
@@ -84,14 +88,16 @@ namespace Shuttle.Core.Ninject
             return this;
         }
 
-        public IComponentRegistry Register(Type serviceType, object instance)
+        public override IComponentRegistry Register(Type dependencyType, object instance)
         {
-            Guard.AgainstNull(serviceType, "serviceType");
+            Guard.AgainstNull(dependencyType, "dependencyType");
             Guard.AgainstNull(instance, "instance");
+
+	        base.Register(dependencyType, instance);
 
             try
             {
-                _container.Bind(serviceType).ToConstant(instance);
+                _container.Bind(dependencyType).ToConstant(instance);
             }
             catch (Exception ex)
             {
@@ -101,13 +107,13 @@ namespace Shuttle.Core.Ninject
             return this;
         }
 
-        public object Resolve(Type serviceType)
+        public object Resolve(Type dependencyType)
         {
-            Guard.AgainstNull(serviceType, "serviceType");
+            Guard.AgainstNull(dependencyType, "dependencyType");
 
             try
             {
-                return _container.Get(serviceType);
+                return _container.Get(dependencyType);
             }
             catch (Exception ex)
             {
@@ -115,13 +121,13 @@ namespace Shuttle.Core.Ninject
             }
         }
 
-        public IEnumerable<object> ResolveAll(Type serviceType)
+        public IEnumerable<object> ResolveAll(Type dependencyType)
         {
-            Guard.AgainstNull(serviceType, "serviceType");
+            Guard.AgainstNull(dependencyType, "dependencyType");
 
             try
             {
-                return _container.GetAll(serviceType);
+                return _container.GetAll(dependencyType);
             }
             catch (Exception ex)
             {
