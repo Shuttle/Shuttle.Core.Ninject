@@ -1,4 +1,4 @@
-# Shuttle.Core.NInject
+# Shuttle.Core.Ninject
 
 # NinjectComponentContainer
 
