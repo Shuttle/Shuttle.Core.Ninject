@@ -57,13 +57,13 @@
     <Compile Include="NinjectComponentContainerFixture.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Shuttle.Core.Ninject\Shuttle.Core.Ninject.csproj">
       <Project>{0F3D1C2E-3119-4837-8C76-DDE794BA95BA}</Project>
       <Name>Shuttle.Core.Ninject</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
