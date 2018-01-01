@@ -1,12 +1,11 @@
 ﻿using Ninject;
 using NUnit.Framework;
-using Shuttle.Core.ComponentContainer.Tests;
-using Shuttle.Core.Infrastructure;
+using Shuttle.Core.Container.Tests;
 
 namespace Shuttle.Core.Ninject.Tests
 {
     [TestFixture]
-    public class NinjectComponentContainerFixture : ComponentContainerFixture
+    public class Fixture : ContainerFixture
     {
         [Test]
         public void Should_be_able_to_register_and_resolve_a_singleton()

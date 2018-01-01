@@ -1,17 +1,22 @@
 <?xml version="1.0"?>
-<package >
-	<metadata>
-		<id>Shuttle.Core.Ninject</id>
-		<version>{semver}</version>
-		<authors>Eben Roux</authors>
-		<owners>Eben Roux</owners>
-		<licenseUrl>https://github.com/shuttle/Shuttle.Core.Ninject/raw/master/LICENSE</licenseUrl>
-		<projectUrl>https://github.com/shuttle/Shuttle.Core.Ninject</projectUrl>
-		<iconUrl>https://raw.githubusercontent.com/Shuttle/Shuttle.Core.Ninject/master/.media/logo.png</iconUrl>
-		<requireLicenseAcceptance>false</requireLicenseAcceptance>
-		<description></description>
-		<releaseNotes/>
-		<copyright>Copyright (c) {year}, Eben Roux</copyright>
-		<tags>shuttle</tags>
-	</metadata>
+
+<package>
+  <metadata>
+    <id>Shuttle.Core.Ninject</id>
+    <version>{semver}</version>
+    <authors>Eben Roux</authors>
+    <owners>Eben Roux</owners>
+    <licenseUrl>https://github.com/shuttle/Shuttle.Core.Ninject/raw/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/shuttle/Shuttle.Core.Ninject</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/Shuttle/Shuttle.Core.Ninject/master/.media/logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Ninject Kernel implementation of the Shuttle.Core.Container dependency injection interfaces</description>
+    <releaseNotes />
+    <copyright>Copyright (c) {year}, Eben Roux</copyright>
+    <tags>shuttle container ninject</tags>
+    <dependencies>
+      <dependency id="Shuttle.Core.Container" version="{Shuttle.Core.Container-version}" />
+      <dependency id="Ninject" version="{Ninject-version}" />
+    </dependencies>
+  </metadata>
 </package>

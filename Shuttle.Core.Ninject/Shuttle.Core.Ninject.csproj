@@ -1,89 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0F3D1C2E-3119-4837-8C76-DDE794BA95BA}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Shuttle.Core.Ninject</RootNamespace>
-    <AssemblyName>Shuttle.Core.Ninject</AssemblyName>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFrameworks>net46;net461;net462;net47;net471;netstandard2.0;netcoreapp2.0</TargetFrameworks>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup>
-    <Framework Condition=" '$(Framework)' == '' ">net45-full</Framework>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Framework)' == 'net45-full'">
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <DefineConstants>$(DefineConstants);NET45FULL</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Framework)' == 'net451-full'">
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
-    <DefineConstants>$(DefineConstants);NET451FULL</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Framework)' == 'net452-full'">
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <DefineConstants>$(DefineConstants);NET452FULL</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Framework)' == 'net46-full'">
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <DefineConstants>$(DefineConstants);NET46FULL</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Framework)' == 'net461-full'">
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <DefineConstants>$(DefineConstants);NET461FULL</DefineConstants>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Shuttle.Core.Infrastructure, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Shuttle.Core.Infrastructure.8.0.0\lib\net45-full\Shuttle.Core.Infrastructure.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="NinjectComponentContainer.cs" />
-  </ItemGroup>
+
   <ItemGroup>
     <None Include=".build\package.msbuild" />
     <None Include=".build\package.nuspec" />
-    <None Include=".build\Shuttle.Core.MSBuild.targets" />
-    <None Include="packages.config" />
+    <None Include=".build\Shuttle.MSBuild.dll" />
+    <None Include=".build\Shuttle.MSBuild.targets" />
   </ItemGroup>
+
   <ItemGroup>
-    <Content Include=".build\Shuttle.Core.MSBuild.dll" />
+    <PackageReference Include="Ninject" Version="3.3.4" />
+    <PackageReference Include="Shuttle.Core.Container" Version="10.0.1" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

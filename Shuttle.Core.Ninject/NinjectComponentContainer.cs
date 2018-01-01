@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Ninject;
-using Shuttle.Core.Infrastructure;
+using Shuttle.Core.Container;
+using Shuttle.Core.Contract;
 
 namespace Shuttle.Core.Ninject
 {
