@@ -26,6 +26,24 @@ namespace Shuttle.Core.Ninject.Tests
         }
 
         [Test]
+        public void Should_be_able_to_register_and_resolve_an_open_generic_singleton()
+        {
+            var container = new NinjectComponentContainer(new StandardKernel());
+
+            RegisterSingletonOpen(container);
+            ResolveSingletonOpen(container);
+        }
+
+        [Test]
+        public void Should_be_able_to_register_and_resolve_transient_open_generic_components()
+        {
+            var container = new NinjectComponentContainer(new StandardKernel());
+
+            RegisterTransientOpen(container);
+            ResolveTransientOpen(container);
+        }
+
+        [Test]
         public void Should_be_able_resolve_all_instances()
         {
             var container = new NinjectComponentContainer(new StandardKernel());

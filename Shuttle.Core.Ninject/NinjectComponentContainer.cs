@@ -108,6 +108,11 @@ namespace Shuttle.Core.Ninject
             return this;
         }
 
+        public override IComponentRegistry RegisterOpen(Type dependencyType, Type implementationType, Lifestyle lifestyle)
+        {
+            return Register(dependencyType, implementationType, lifestyle);
+        }
+
         public object Resolve(Type dependencyType)
         {
             Guard.AgainstNull(dependencyType, "dependencyType");
