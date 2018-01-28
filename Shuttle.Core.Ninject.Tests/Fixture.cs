@@ -30,8 +30,8 @@ namespace Shuttle.Core.Ninject.Tests
         {
             var container = new NinjectComponentContainer(new StandardKernel());
 
-            RegisterSingletonOpen(container);
-            ResolveSingletonOpen(container);
+            RegisterSingletonGeneric(container);
+            ResolveSingletonGeneric(container);
         }
 
         [Test]
@@ -39,8 +39,8 @@ namespace Shuttle.Core.Ninject.Tests
         {
             var container = new NinjectComponentContainer(new StandardKernel());
 
-            RegisterTransientOpen(container);
-            ResolveTransientOpen(container);
+            RegisterTransientGeneric(container);
+            ResolveTransientGeneric(container);
         }
 
         [Test]
