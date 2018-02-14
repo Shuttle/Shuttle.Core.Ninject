@@ -1,6 +1,8 @@
 # Shuttle.Core.Ninject
 
-# NinjectComponentContainer
+```
+PM> Install-Package Shuttle.Core.Ninject
+```
 
 The `NinjectComponentContainer` implements both the `IComponentRegistry` and `IComponentResolver` interfaces.  
 
