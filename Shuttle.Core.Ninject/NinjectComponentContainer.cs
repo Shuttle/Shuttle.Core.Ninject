@@ -8,13 +8,13 @@ namespace Shuttle.Core.Ninject
 {
     public class NinjectComponentContainer : ComponentRegistry, IComponentResolver
     {
-        private readonly StandardKernel _container;
+        private readonly IKernel _kernel;
 
-        public NinjectComponentContainer(StandardKernel container)
+        public NinjectComponentContainer(IKernel kernel)
         {
-            Guard.AgainstNull(container, "container");
+            Guard.AgainstNull(kernel, "container");
 
-            _container = container;
+            _kernel = kernel;
         }
 
         public override IComponentRegistry Register(Type dependencyType, Type implementationType, Lifestyle lifestyle)
@@ -30,13 +30,13 @@ namespace Shuttle.Core.Ninject
                 {
                     case Lifestyle.Transient:
                     {
-                        _container.Bind(dependencyType).To(implementationType).InTransientScope();
+                        _kernel.Bind(dependencyType).To(implementationType).InTransientScope();
 
                         break;
                     }
                     default:
                     {
-                        _container.Bind(dependencyType).To(implementationType).InSingletonScope();
+                        _kernel.Bind(dependencyType).To(implementationType).InSingletonScope();
 
                         break;
                     }
@@ -65,7 +65,7 @@ namespace Shuttle.Core.Ninject
                         {
                             foreach (var implementationType in implementationTypes)
                             {
-                                _container.Bind(dependencyType).To(implementationType).InTransientScope();
+                                _kernel.Bind(dependencyType).To(implementationType).InTransientScope();
                             }
 
                             break;
@@ -74,7 +74,7 @@ namespace Shuttle.Core.Ninject
                         {
                             foreach (var implementationType in implementationTypes)
                             {
-                                _container.Bind(dependencyType).To(implementationType).InSingletonScope();
+                                _kernel.Bind(dependencyType).To(implementationType).InSingletonScope();
                             }
 
                             break;
@@ -98,7 +98,7 @@ namespace Shuttle.Core.Ninject
 
             try
             {
-                _container.Bind(dependencyType).ToConstant(instance);
+                _kernel.Bind(dependencyType).ToConstant(instance);
             }
             catch (Exception ex)
             {
@@ -119,7 +119,7 @@ namespace Shuttle.Core.Ninject
 
             try
             {
-                return _container.Get(dependencyType);
+                return _kernel.Get(dependencyType);
             }
             catch (Exception ex)
             {
@@ -133,7 +133,7 @@ namespace Shuttle.Core.Ninject
 
             try
             {
-                return _container.GetAll(dependencyType);
+                return _kernel.GetAll(dependencyType);
             }
             catch (Exception ex)
             {
