@@ -15,6 +15,9 @@ namespace Shuttle.Core.Ninject
             Guard.AgainstNull(kernel, "container");
 
             _kernel = kernel;
+
+            this.AttemptRegisterInstance<IComponentRegistry>(this);
+            this.AttemptRegisterInstance<IComponentResolver>(this);
         }
 
         public override IComponentRegistry Register(Type dependencyType, Type implementationType, Lifestyle lifestyle)
