@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+
 <package>
   <metadata>
     <id>Shuttle.Core.Ninject</id>
@@ -21,6 +22,6 @@
   </metadata>
   <files>
     <file src="..\..\..\..\.media\logo.png" target="images\" />
-	<file src="lib\**\*.*" target="lib" />
+    <file src="lib\**\*.*" target="lib" />
   </files>
 </package>
